@@ -1,83 +1,77 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Layout</title>
+    <title>Responsive Layout Assignment</title>
     <style>
-        /* 基本頁面重置與背景設定 */
+        /* 基礎背景與容器設定 */
         body {
+            background-color: #6da9f2;
             margin: 0;
             padding: 20px;
-            background-color: #6caaf5; 
-            font-family: sans-serif;
             display: flex;
             justify-content: center;
+            font-family: Arial, sans-serif;
         }
 
-        /* 白色主容器 */
         .container {
             background-color: white;
-            width: 100%;
+            width: 90%;
             max-width: 800px;
-            padding: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 10px; 
-            box-sizing: border-box;
+            gap: 15px;
         }
 
         /* 頂部綠色區塊 */
-        .header-box {
-            background-color: #b5d56a;
+        .header {
+            background-color: #b1d36a;
+            height: 150px;
             width: 100%;
-            aspect-ratio: 3 / 1; /* 維持寬扁的比例 */
         }
 
-        /* 中間藍綠色區塊容器 (3 欄) */
+        /* 中間藍色區塊容器 */
         .middle-section {
+            display: flex;
+            gap: 15px;
+            flex-direction: column; /* 預設手機版：垂直排列 (a) */
+        }
+
+        .blue-box {
+            background-color: #5abcc7;
+            height: 80px;
+            flex: 1;
+        }
+
+        /* 底部灰色區塊容器 */
+        .footer-section {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 15px;
+            grid-template-columns: repeat(2, 1fr); /* 預設手機版：2欄 (a) */
         }
 
-        .middle-box {
-            background-color: #5bc0cc;
-            aspect-ratio: 3 / 4; /* 【關鍵修改】設定為直立長方形 (寬3:高4) */
+        .gray-box {
+            background-color: #f0f0f0;
+            height: 50px;
         }
 
-        /* 底部灰色區塊容器 (4 欄) */
-        .bottom-section {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .bottom-box {
-            background-color: #eef1f3;
-            aspect-ratio: 1 / 1; /* 【關鍵修改】設定為正方形 (寬1:高1) */
-        }
-
-        /* 響應式設定：小於 480px 時套用 */
-        @media (max-width: 480px) {
-            .header-box {
-                aspect-ratio: 2 / 1; /* 手機版頂部稍微加高 */
-            }
-
-            /* 中間區塊變成 1 欄 */
+        /* --- 響應式關鍵：當寬度大於 480px 時 (b) --- */
+        @media (min-width: 481px) {
             .middle-section {
-                grid-template-columns: 1fr;
+                flex-direction: row; /* 切換為水平排列 */
+                height: 200px;
             }
-            .middle-box {
-                aspect-ratio: 4 / 1; /* 手機版變成圖(a)的橫向扁長方形 */
+            
+            .blue-box {
+                height: auto; /* 填滿容器高度 */
             }
 
-            /* 底部區塊變成 2 欄 2 列 */
-            .bottom-section {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .bottom-box {
-                aspect-ratio: 2.5 / 1; /* 手機版變成圖(a)的橫向長方形 */
+            .footer-section {
+                grid-template-columns: repeat(4, 1fr); /* 切換為 4 欄排列 */
             }
         }
     </style>
@@ -85,19 +79,19 @@
 <body>
 
     <div class="container">
-        <div class="header-box"></div>
+        <div class="header"></div>
 
         <div class="middle-section">
-            <div class="middle-box"></div>
-            <div class="middle-box"></div>
-            <div class="middle-box"></div>
+            <div class="blue-box"></div>
+            <div class="blue-box"></div>
+            <div class="blue-box"></div>
         </div>
 
-        <div class="bottom-section">
-            <div class="bottom-box"></div>
-            <div class="bottom-box"></div>
-            <div class="bottom-box"></div>
-            <div class="bottom-box"></div>
+        <div class="footer-section">
+            <div class="gray-box"></div>
+            <div class="gray-box"></div>
+            <div class="gray-box"></div>
+            <div class="gray-box"></div>
         </div>
     </div>
 
